@@ -5,8 +5,7 @@ declare(strict_types=1);
 namespace Ksfraser\FrontAccounting\HRM\Contracts\App;
 
 use ksfraser\FrontAccounting\Common\App\AbstractAppShell;
-use ksfraser\FrontAccounting\Common\Menu\FAModuleMenu;
-use Ksfraser\FrontAccounting\HRM\Contracts\Controller\ContractsTabController;
+use ksfraser\FrontAccounting\Common\App\TabRegistration;
 
 class ContractsAppShell extends AbstractAppShell
 {
@@ -14,17 +13,16 @@ class ContractsAppShell extends AbstractAppShell
     {
         parent::__construct('contracts', 'index.php', 'view', 'hrm_contracts');
 
-        $this->add_module(_("Contracts"));
-
-        $menu = new FAModuleMenu(
-            'modules/ksf_FA_HRM_Contracts/index.php',
-            'view',
-            ''
-        );
-
-        $menu->addItem('hrm_contracts', _("Contracts"), MENU_INQUIRY)
-             ->registerWithApp($this, 'SA_CONTRACTS_VIEW');
-
-        $this->add_extensions();
+        $this->registerTab(new TabRegistration(
+            'hrm_contracts',
+            'Contracts',
+            'SA_CONTRACTS_VIEW',
+            null,
+            10,
+            0,
+            null,
+            null,
+            array()
+        ));
     }
 }

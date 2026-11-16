@@ -1,17 +1,11 @@
 <?php
-declare(strict_types=1);
 
-use Ksfraser\FrontAccounting\HRM\Contracts\App\ContractsFrontController;
-use Ksfraser\FrontAccounting\HRM\Contracts\App\ContractsAppShell;
+require_once __DIR__ . '/bootstrap.php';
 
 $path_to_root = '../..';
 
-if (file_exists(__DIR__ . '/bootstrap.php')) {
-    require_once __DIR__ . '/bootstrap.php';
-}
-
-$frontController = new ContractsFrontController(
-    new ContractsAppShell(),
+$frontController = new \Ksfraser\FrontAccounting\HRM\Contracts\App\ContractsFrontController(
+    new \Ksfraser\FrontAccounting\HRM\Contracts\App\ContractsAppShell(),
     'SA_CONTRACTS_VIEW',
     $path_to_root
 );
