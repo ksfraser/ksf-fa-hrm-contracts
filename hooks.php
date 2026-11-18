@@ -8,10 +8,10 @@ require_once __DIR__ . '/includes/common.inc';
 require_once __DIR__ . '/includes/events.inc';
 use ksfraser\RelatedTo\DTO\RelatedRecordDto;
 define('SS_ksf_FA_HRM_Contracts', 194 << 8);
-if (!defined('SA_CONTRACTS_VIEW')) {
-    define('SA_CONTRACTS_VIEW', SS_ksf_FA_HRM_Contracts | 1);
-    define('SA_CONTRACTS_MANAGE', SS_ksf_FA_HRM_Contracts | 2);
-    define('SA_CONTRACTS_ADMIN', SS_ksf_FA_HRM_Contracts | 3);
+if (!defined('SA_HRM_CONTRACTS_VIEW')) {
+    define('SA_HRM_CONTRACTS_VIEW', SS_ksf_FA_HRM_Contracts | 1);
+    define('SA_HRM_CONTRACTS_MANAGE', SS_ksf_FA_HRM_Contracts | 2);
+    define('SA_HRM_CONTRACTS_ADMIN', SS_ksf_FA_HRM_Contracts | 3);
 }
 class hooks_ksf_FA_HRM_Contracts extends hooks {
     const RESPONDERS = array('RELATED_TO_FIELDS', 'CONTRACTS_RESOLVE', 'CONTRACTS_FIELDS', 'CONTRACTS_LIST');
@@ -21,9 +21,9 @@ class hooks_ksf_FA_HRM_Contracts extends hooks {
     function install_options($app) { }
     function install_access() {
         $security_sections[SS_ksf_FA_HRM_Contracts] = _("Contracts");
-        $security_areas['SA_CONTRACTS_VIEW'] = array(SA_CONTRACTS_VIEW, _("View contracts"));
-        $security_areas['SA_CONTRACTS_MANAGE'] = array(SA_CONTRACTS_MANAGE, _("Manage contracts"));
-        $security_areas['SA_CONTRACTS_ADMIN'] = array(SA_CONTRACTS_ADMIN, _("Administer contracts"));
+        $security_areas['SA_HRM_CONTRACTS_VIEW'] = array(SA_HRM_CONTRACTS_VIEW, _("View contracts"));
+        $security_areas['SA_HRM_CONTRACTS_MANAGE'] = array(SA_HRM_CONTRACTS_MANAGE, _("Manage contracts"));
+        $security_areas['SA_HRM_CONTRACTS_ADMIN'] = array(SA_HRM_CONTRACTS_ADMIN, _("Administer contracts"));
         return array($security_areas, $security_sections);
     }
     function activate_extension($company, $check_only = true) {
@@ -40,9 +40,9 @@ class hooks_ksf_FA_HRM_Contracts extends hooks {
     public function getModuleConstants(&$data, $opts = null) {
         $data['constants'] = array(
             'SS_ksf_FA_HRM_Contracts' => SS_ksf_FA_HRM_Contracts,
-            'SA_CONTRACTS_VIEW' => SA_CONTRACTS_VIEW,
-            'SA_CONTRACTS_MANAGE' => SA_CONTRACTS_MANAGE,
-            'SA_CONTRACTS_ADMIN' => SA_CONTRACTS_ADMIN,
+            'SA_HRM_CONTRACTS_VIEW' => SA_HRM_CONTRACTS_VIEW,
+            'SA_HRM_CONTRACTS_MANAGE' => SA_HRM_CONTRACTS_MANAGE,
+            'SA_HRM_CONTRACTS_ADMIN' => SA_HRM_CONTRACTS_ADMIN,
         );
         return true;
     }
